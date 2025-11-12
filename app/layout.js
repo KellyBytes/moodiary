@@ -1,5 +1,9 @@
 import { Fugaz_One, Open_Sans, Inter } from 'next/font/google';
 import './globals.css';
+import Link from 'next/link';
+import { AuthProvider } from '@/context/AuthContext';
+import Head from './head';
+import Logout from '@/components/Logout';
 
 const inter = Inter({ subsets: ['latin'] });
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -10,32 +14,36 @@ export const metadata = {
   description: 'Track your daily mood every day of the year!',
 };
 
-const header = (
-  <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
-    <h1 className={`text-base sm:text-lg textGradient ${fugaz.className}`}>
-      Moodiary
-    </h1>
-    <div className="flex items-center justify-between">
-      PLACEHOLDER CTA || STATS
-    </div>
-  </header>
-);
-const footer = (
-  <footer className="p-4 sm:p-8 grid place-items-center">
-    <p className={`text-amber-600 ${fugaz.className}`}>Created with 💕</p>
-  </footer>
-);
-
 export default function RootLayout({ children }) {
+  const header = (
+    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+      <Link href={'/'}>
+        <h1 className={`text-xl sm:text-2xl textGradient ${fugaz.className}`}>
+          Moodiary
+        </h1>
+      </Link>
+      <Logout />
+    </header>
+  );
+
+  const footer = (
+    <footer className="p-4 sm:p-8 grid place-items-center">
+      <p className={`text-amber-600 ${fugaz.className}`}>Created with 💕</p>
+    </footer>
+  );
+
   return (
     <html lang="en">
-      <body
-        className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-800 ${openSans.className}`}
-      >
-        {header}
-        {children}
-        {footer}
-      </body>
+      <Head />
+      <AuthProvider>
+        <body
+          className={`w-full max-w-[1000px] mx-auto text-sm sm:text-base min-h-screen flex flex-col text-slate-800 ${openSans.className}`}
+        >
+          {header}
+          {children}
+          {footer}
+        </body>
+      </AuthProvider>
     </html>
   );
 }
