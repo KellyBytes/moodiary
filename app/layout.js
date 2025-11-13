@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { AuthProvider } from '@/context/AuthContext';
 import Head from './head';
 import Logout from '@/components/Logout';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -41,7 +42,8 @@ export default function RootLayout({ children }) {
         >
           {header}
           {children}
-          {footer}
+          {/* {footer} */}
+          <Footer />
         </body>
       </AuthProvider>
     </html>
