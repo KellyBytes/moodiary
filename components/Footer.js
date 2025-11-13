@@ -7,13 +7,11 @@ const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 export default function Footer() {
   return (
     <footer className="w-full flex flex-col md:flex-row justify-center items-center mt-4 mb-8">
-      <small
-        className={`textGradient mb-1 md:mb-0 md:mr-1 md:translate-y-1 ${fugaz.className}`}
-      >
+      <small className={`text-stone-600 mb-1 md:mb-0 md:mr-1 md:translate-y-1`}>
         Created by
       </small>
       <a
-        className="flex items-center gap-1 p-1 pr-2 bg-amber-100 rounded-4xl border border-transparent shadow-md hover:border-amber-700 hover:shadow hover:scale-[0.98] hover:opacity-80 duration-200"
+        className={`flex items-center gap-1 p-1 pr-2 text-xs md:text-sm text-amber-700 rounded-4xl border-2 border-amber-700 hover:opacity-60 duration-200 ${fugaz.className}`}
         alt="pfp"
         href="https://github.com/KellyBytes"
         target="_blank"

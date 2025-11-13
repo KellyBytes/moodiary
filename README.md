@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Moodiary | Mood Tracker App [🔗](https://kb-moodiary.netlify.app "Click to launch the Moodiary")
 
-## Getting Started
+### Screenshots
 
-First, run the development server:
+<img src="./public/images/moodiary.png" width="600">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💡 Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Moodiary** is a simple and intuitive daily mood-tracking application built with **React**, **Next.js 14**, **Tailwind CSS**, and **Firebase**. After authenticating, users can select one of five mood icons to record how they feel each day. The app visualizes mood history on a monthly calendar and provides key insights such as streaks and average mood.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<br/>
 
-## Learn More
+## 🚀 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **User Authentication**
+  Secure sign-in and sign-out flow using Firebase Authentication.
+- **Daily Mood Logging**
+  Users choose from five mood levels (1–5). The day’s mood is saved to Firestore.
+- **Color-Coded Monthly Calendar**
+  Each calendar cell displays a color representing the saved mood for that date.
+- **Statistics Dashboard**
+  - Current mood streak
+  - Average mood for the selected month or overall
+- **Real-Time Sync**
+  UI updates immediately when new mood data is recorded.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Tech Stack / Skills Demonstrated
 
-## Deploy on Vercel
+- **Next.js 14 (App Router)**
+  Server components, route handlers, file-based routing.
+- **React**
+  State management with hooks, component composition.
+- **Tailwind CSS**
+  Responsive design, utility-first styling.
+- **Firebase Authentication**
+  Auth state handling, protected routes.
+- **Firestore (NoSQL database)**
+  CRUD operations, real-time updates, data modeling.
+- **Deployment & Environment Config**
+  Secure API key handling (.env files), deployed with Netlify.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br/>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 What I Learned
+
+- Implementing a **full authentication workflow** with Firebase Auth (sign-in, sign-out, session listening).
+- Designing and structuring a **NoSQL Firestore schema** for time-based data.
+- Building a **dynamic calendar UI** and mapping Firestore data to date-based components.
+- Calculating statistics such as streaks and averages based on user-generated data.
+- Applying **responsive and accessible UI design** using Tailwind CSS.
+- Managing **client/server boundaries** in Next.js 14 and optimizing rendering patterns.
+- Debugging asynchronous Firestore reads/writes and ensuring real-time UI consistency.
+
+<br/>
+
+
+## 🎯 Future Improvements
+
+- **Mood Notes**
+  Allow users to add a short note or journal entry along with their daily mood.
+- **Edit Past Entries**
+  Provide tools to view and update previously recorded moods.
+- **Dark Mode**
+  Add theme switching for improved accessibility and user preference.
+- **Advanced Analytics**
+  Weekly/monthly charts, mood distribution, and insights.
+- **Social Features**
+  Optional sharing or exporting mood data.
+
+<br/>
+
+---
+
+[🔼 Back to Top](#moodiary--mood-tracker-app-)

@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const header = (
     <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
-      <Link href={'/'}>
+      <Link href={'/'} title="Moodiary Home">
         <h1 className={`text-xl sm:text-2xl textGradient ${fugaz.className}`}>
           Moodiary
         </h1>
