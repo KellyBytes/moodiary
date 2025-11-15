@@ -13,6 +13,11 @@ const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 export const metadata = {
   title: 'Moodiary',
   description: 'Track your daily mood every day of the year!',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
