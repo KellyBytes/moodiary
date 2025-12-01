@@ -1,4 +1,4 @@
-# Moodiary | Mood Tracker App [🔗](https://kb-moodiary.netlify.app "Click to launch the Moodiary")
+# Moodiary | Mood Tracker App [➚](https://moodiary.kellybytes.dev "Click to launch the Moodiary")
 
 ### Screenshots
 
@@ -72,6 +72,11 @@
   Optional sharing or exporting mood data.
 
 <br/>
+
+## ▶ Live Demo
+
+🔗 https://moodiary.kellybytes.dev
+
 
 ---
 

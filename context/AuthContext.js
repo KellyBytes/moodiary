@@ -3,6 +3,7 @@ import { auth, db } from '@/firebase';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
@@ -27,6 +28,10 @@ export function AuthProvider({ children }) {
 
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function resetPassword(email) {
+    return sendPasswordResetEmail(auth, email);
   }
 
   function logout() {
@@ -73,6 +78,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    resetPassword,
     loading,
   };
 

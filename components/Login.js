@@ -11,8 +11,11 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
   const [authenticating, setAuthenticating] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
+  const [isResettingPassword, setIsResettingPassword] = useState(false);
 
-  const { signup, login } = useAuth();
+  const { signup, login, resetPassword } = useAuth();
 
   async function handleSubmit() {
     if (!email || !password || password.length < 6) return;
@@ -30,6 +33,18 @@ export default function Login() {
       console.log(error.message);
     } finally {
       setAuthenticating(false);
+    }
+  }
+
+  async function handleResetPassword(e) {
+    e.preventDefault();
+    try {
+      await resetPassword(resetEmail);
+      setResetMessage(
+        'Password reset email has been sent. Please check your inbox.'
+      );
+    } catch (error) {
+      setResetMessage(error.message);
     }
   }
 
@@ -57,22 +72,72 @@ export default function Login() {
         className="max-w-[400px] w-full mx-auto px-3 py-2 sm:py-3 border border-solid border-amber-500 rounded-full outline-none hover:border-amber-700 focus:border-amber-700 duration-200"
         placeholder="Password"
       />
-      <div className="max-w-[400px] w-full mx-auto">
+      <div className="max-w-[400px] w-full mx-auto cursor-pointer">
         <Button
           clickHandler={handleSubmit}
           text={authenticating ? 'Submitting' : 'Submit'}
           full
         />
       </div>
-      <p className="text-center">
-        {isRegister ? 'Already have an account? ' : "Don't have an account? "}
-        <button
-          onClick={() => setIsRegister(!isRegister)}
-          className="text-amber-700"
-        >
-          {isRegister ? 'Sign in' : 'Sign up'}
-        </button>
-      </p>
+      <div className="register-container max-w-[400px] w-full mx-auto text-xs">
+        {!isResettingPassword ? (
+          <>
+            <div className="signin-signup flex gap-x-1">
+              <p>
+                {isRegister
+                  ? 'Already have an account?'
+                  : "Don't have an account?"}
+              </p>
+              <button
+                onClick={() => setIsRegister(!isRegister)}
+                className="text-amber-700 hover:opacity-60 duration-200 cursor-pointer"
+              >
+                <p>{isRegister ? 'Sign in' : 'Sign up'}</p>
+              </button>
+            </div>
+            <div className="reset-password flex gap-x-1">
+              <p>{isRegister ? '' : 'Forget your password?'}</p>
+              <button
+                onClick={() => setIsResettingPassword(true)}
+                className="text-amber-700 hover:opacity-60 duration-200 cursor-pointer"
+              >
+                <p>{isRegister ? '' : 'Reset your Password'}</p>
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <hr className="text-amber-700/40" />
+            {!resetMessage ? (
+              <form
+                onSubmit={handleResetPassword}
+                className="reset-password-form w-full flex gap-x-2 mt-3"
+              >
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  required
+                  className="flex-2 px-3 py-2 sm:py-3 border border-solid border-amber-500 rounded-full outline-none hover:border-amber-700 focus:border-amber-700 focus:placeholder:opacity-0 duration-200"
+                />
+                <button
+                  type="submit"
+                  className="flex-1 rounded-full overflow-hidden text-amber-700 border-2 border-solid border-amber-700 hover:opacity-60 duration-200 cursor-pointer"
+                >
+                  <p
+                    className={`whitespace-nowrap py-2 sm:py-3 ${fugaz.className}`}
+                  >
+                    Send Reset Link
+                  </p>
+                </button>
+              </form>
+            ) : (
+              <p className="reset-message mt-4 text-center">{resetMessage}</p>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
